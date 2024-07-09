@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
-    private static final String SELECT_ALL_USERS = "SELECT id, email, created_at, nick, name, password, weight, updated_at FROM users";
-    private static final String SELECT_USER_BY_ID = "SELECT id, email, created_at, nick, name, password, weight, updated_at FROM users WHERE id = ?";
-    private static final String INSERT_USER_SQL = "INSERT INTO users (email, created_at, nick, name, password, weight, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String SELECT_ALL_USERS = "SELECT id, email, created_at, nick, name, password, weight, updated_at, rol_id FROM users";
+    private static final String SELECT_USER_BY_ID = "SELECT id, email, created_at, nick, name, password, weight, updated_at, rol_id FROM users WHERE id = ?";
+    private static final String INSERT_USER_SQL = "INSERT INTO users (email, created_at, nick, name, password, weight, updated_at, rol_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     @Override
     public UserDTO selectUser(int id) {
         UserDTO user = null;
@@ -31,7 +31,8 @@ public class UserDAOImpl implements UserDAO {
                 String password = resultSet.getString("password");
                 int weight = resultSet.getInt("weight");
                 Date updatedAt = resultSet.getDate("updated_at");
-                user = new UserDTO(id, email, createdAt, nick, name, password, weight, updatedAt);
+                int rolId = resultSet.getInt("rol_id");
+                user = new UserDTO(id, email, createdAt, nick, name, password, weight, updatedAt, rolId);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -54,7 +55,8 @@ public class UserDAOImpl implements UserDAO {
                 String password = resultSet.getString("password");
                 int weight = resultSet.getInt("weight");
                 Date updatedAt = resultSet.getDate("updated_at");
-                users.add(new UserDTO(id, email, createdAt, nick, name, password, weight, updatedAt));
+                int rolId = resultSet.getInt("rol_id");
+                users.add(new UserDTO(id, email, createdAt, nick, name, password, weight, updatedAt, rolId));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -78,6 +80,7 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(5, user.getPassword());
             preparedStatement.setInt(6, user.getWeight());
             preparedStatement.setDate(7, sqlUpdatedAt);
+            preparedStatement.setInt(8, user.getRolId());
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()) {
@@ -90,7 +93,8 @@ public class UserDAOImpl implements UserDAO {
                         user.getName(),
                         user.getPassword(),
                         user.getWeight(),
-                        user.getUpdatedAt()
+                        user.getUpdatedAt(),
+                        user.getRolId()
                 );
             }
         } catch (SQLException e) {

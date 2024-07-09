@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
     public UserDTO selectUser(int id) { return OBJ_USER_DAO.selectUser(id); }
 
     @Override
+    public List<UserDTO> selectAllUsers() {
+        return OBJ_USER_DAO.selectAllUsers();
+    }
+
+    @Override
     public Optional<UserDTO> filterUser(String email, String password) {
         List<UserDTO> users = OBJ_USER_DAO.selectAllUsers();
 

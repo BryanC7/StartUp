@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @WebServlet(name = "UserServlet", value = "/user")
@@ -57,10 +58,19 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         Optional<UserDTO> userFound = objUserService.filterUser(email, password);
+        List<UserDTO> usersList = objUserService.selectAllUsers();
 
         if(userFound.isPresent()) {
-            request.setAttribute("user", userFound.get());
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            if(userFound.get().getRolId() == 1) {
+                request.setAttribute("admin", userFound.get());
+                request.setAttribute("usersList", usersList);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
+            } else {
+                printMessage("msgNoAdmin",
+                        "login.jsp",
+                        "Usuario no posee el rol administrador",
+                        request, response);
+            }
         } else {
             printMessage("msgError",
                     "login.jsp",
@@ -81,11 +91,12 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("password");
         int weight = Integer.parseInt(request.getParameter("weight"));
         Date updatedAt = new Date();
+        int rolId = 2;
 
         Optional<UserDTO> userFound = objUserService.filterUserRegister(email, nick);
 
         if(userFound.isEmpty()) {
-            UserDTO newUser = new UserDTO(email, createdAt, nick, name, password, weight, updatedAt);
+            UserDTO newUser = new UserDTO(email, createdAt, nick, name, password, weight, updatedAt, rolId);
             objUserService.insertUser(newUser);
             printMessage("msgSuccess",
                     "login.jsp",

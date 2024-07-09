@@ -36,6 +36,12 @@
             </div>
         </c:when>
 
+        <c:when test = "${msgNoAdmin != null}">
+            <div class="mt-5 alert alert-danger" role="alert">
+                <c:out value="${msgNoAdmin}"/>
+            </div>
+        </c:when>
+
         <c:when test = "${msgSuccess != null}">
             <div class="mt-5 alert alert-success" role="alert">
                 <c:out value="${msgSuccess}"/>

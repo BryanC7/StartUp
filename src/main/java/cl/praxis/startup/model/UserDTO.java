@@ -19,8 +19,9 @@ public class UserDTO {
     private String password;
     private int weight;
     private Date updatedAt;
+    private int rolId;
 
-    public UserDTO(String email, Date createdAt, String nick, String name, String password, int weight, Date updatedAt) {
+    public UserDTO(String email, Date createdAt, String nick, String name, String password, int weight, Date updatedAt, int rolId) {
         this.email = email;
         this.createdAt = createdAt;
         this.nick = nick;
@@ -28,5 +29,6 @@ public class UserDTO {
         this.password = password;
         this.weight = weight;
         this.updatedAt = updatedAt;
+        this.rolId = rolId;
     }
 }

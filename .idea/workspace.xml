@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Print message method and implementations in login and register" />
+    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Changes web.xml file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +35,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -42,9 +56,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2iyzjbn3wq8Sq0QaeNx7TxNg5Jj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -59,7 +73,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Tomcat Server.Tomcat 10.1.24.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "admin",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -125,6 +140,9 @@
       <option name="presentableId" value="Default" />
       <updated>1720477740441</updated>
       <workItem from="1720477741453" duration="8976000" />
+      <workItem from="1720491369882" duration="209000" />
+      <workItem from="1720491850529" duration="40000" />
+      <workItem from="1720556812002" duration="3281000" />
     </task>
     <task id="LOCAL-00001" summary="feat: First project files">
       <option name="closed" value="true" />
@@ -150,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720488581963</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add: Changes web.xml file">
+      <option name="closed" value="true" />
+      <created>1720491561672</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720491561672</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +186,7 @@
     <MESSAGE value="feat: First project files" />
     <MESSAGE value="add: Filters to login or register users" />
     <MESSAGE value="add: Print message method and implementations in login and register" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: Print message method and implementations in login and register" />
+    <MESSAGE value="add: Changes web.xml file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: Changes web.xml file" />
   </component>
 </project>
