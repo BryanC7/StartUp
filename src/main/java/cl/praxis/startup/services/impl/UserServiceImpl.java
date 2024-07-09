@@ -6,6 +6,7 @@ import cl.praxis.startup.model.UserDTO;
 import cl.praxis.startup.services.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
     private final UserDAO OBJ_USER_DAO;
@@ -18,20 +19,21 @@ public class UserServiceImpl implements UserService {
     public UserDTO selectUser(int id) { return OBJ_USER_DAO.selectUser(id); }
 
     @Override
-    public UserDTO filterUser(String email, String password) {
-        UserDTO userFound = null;
+    public Optional<UserDTO> filterUser(String email, String password) {
         List<UserDTO> users = OBJ_USER_DAO.selectAllUsers();
 
-        for (UserDTO user : users) {
-            if(user.getEmail().equals(email)) {
-                if(user.getPassword().equals(password)) {
-                    System.out.println(userFound);
-                    userFound = user;
-                }
-            }
-        }
+        return users.stream()
+                .filter(user -> user.getEmail().equals(email) && user.getPassword().equals(password))
+                .findFirst();
+    }
 
-        return userFound;
+    @Override
+    public Optional<UserDTO> filterUserRegister(String email, String nick) {
+        List<UserDTO> users = OBJ_USER_DAO.selectAllUsers();
+
+        return users.stream()
+                .filter(user -> user.getEmail().equals(email) || user.getNick().equals(nick))
+                .findFirst();
     }
 
     @Override

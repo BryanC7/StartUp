@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -39,6 +40,12 @@
             <a class="btn btn-secondary" href="user">Regresa al login</a>
         </div>
     </form>
+
+    <c:if test="${msgError != null}">
+        <div class="mt-5 alert alert-danger" role="alert">
+            <c:out value="${msgError}"></c:out>
+        </div>
+    </c:if>
 </div>
 
 <script

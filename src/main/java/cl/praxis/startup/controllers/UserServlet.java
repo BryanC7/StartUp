@@ -10,11 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
+import java.util.Optional;
 
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
@@ -56,13 +53,13 @@ public class UserServlet extends HttpServlet {
     }
 
     private void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("name");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserDTO userFound = objUserService.filterUser(email, password);
+        Optional<UserDTO> userFound = objUserService.filterUser(email, password);
 
-        if(userFound != null) {
-            request.setAttribute("user", userFound);
+        if(userFound.isPresent()) {
+            request.setAttribute("user", userFound.get());
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else {
             String msgError = "Usuario no encontrado, intente nuevamente";
@@ -84,8 +81,21 @@ public class UserServlet extends HttpServlet {
         int weight = Integer.parseInt(request.getParameter("weight"));
         Date updatedAt = new Date();
 
-        UserDTO newUser = new UserDTO(email, createdAt, nick, name, password, weight, updatedAt);
-        objUserService.insertUser(newUser);
-        response.sendRedirect("user");
+        Optional<UserDTO> userFound = objUserService.filterUserRegister(email, nick);
+
+        if(userFound.isEmpty()) {
+            UserDTO newUser = new UserDTO(email, createdAt, nick, name, password, weight, updatedAt);
+            objUserService.insertUser(newUser);
+            response.sendRedirect("user");
+        } else {
+            String msgError = "Correo y/o apodo ya registrados, intenta con uno nuevo";
+            request.setAttribute("msgError", msgError);
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
+    }
+
+    private void printMessage(String attribute, String dispatcher, String message) {
+        request.setAttribute(attribute, message);
+        request.getRequestDispatcher(dispatcher).forward(request, response);
     }
 }
