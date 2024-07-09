@@ -29,11 +29,19 @@
         </div>
     </form>
 
-    <c:if test="${msgError != null}">
-    <div class="mt-5 alert alert-danger" role="alert">
-        <c:out value="${msgError}"></c:out>
-    </div>
-    </c:if>
+    <c:choose>
+        <c:when test = "${msgError != null}">
+            <div class="mt-5 alert alert-danger" role="alert">
+                <c:out value="${msgError}"/>
+            </div>
+        </c:when>
+
+        <c:when test = "${msgSuccess != null}">
+            <div class="mt-5 alert alert-success" role="alert">
+                <c:out value="${msgSuccess}"/>
+            </div>
+        </c:when>
+    </c:choose>
 </div>
 </body>
 </html>

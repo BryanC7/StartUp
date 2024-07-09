@@ -62,9 +62,10 @@ public class UserServlet extends HttpServlet {
             request.setAttribute("user", userFound.get());
             request.getRequestDispatcher("home.jsp").forward(request, response);
         } else {
-            String msgError = "Usuario no encontrado, intente nuevamente";
-            request.setAttribute("msgError", msgError);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            printMessage("msgError",
+                    "login.jsp",
+                    "Usuario no encontrado, intente nuevamente",
+                    request, response);
         }
     }
 
@@ -86,15 +87,19 @@ public class UserServlet extends HttpServlet {
         if(userFound.isEmpty()) {
             UserDTO newUser = new UserDTO(email, createdAt, nick, name, password, weight, updatedAt);
             objUserService.insertUser(newUser);
-            response.sendRedirect("user");
+            printMessage("msgSuccess",
+                    "login.jsp",
+                    "Usuario registrado exitósamente",
+                    request, response);
         } else {
-            String msgError = "Correo y/o apodo ya registrados, intenta con uno nuevo";
-            request.setAttribute("msgError", msgError);
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            printMessage("msgError",
+                        "register.jsp",
+                        "Correo y/o apodo ya registrados, intenta con uno nuevo",
+                        request, response);
         }
     }
 
-    private void printMessage(String attribute, String dispatcher, String message) {
+    private void printMessage(String attribute, String dispatcher, String message, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute(attribute, message);
         request.getRequestDispatcher(dispatcher).forward(request, response);
     }
