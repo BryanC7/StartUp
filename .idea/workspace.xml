@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Filters to login or register users">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Print message method and implementations in login and register" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +124,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720477740441</updated>
-      <workItem from="1720477741453" duration="8825000" />
+      <workItem from="1720477741453" duration="8976000" />
     </task>
     <task id="LOCAL-00001" summary="feat: First project files">
       <option name="closed" value="true" />
@@ -147,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720487239417</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add: Print message method and implementations in login and register">
+      <option name="closed" value="true" />
+      <created>1720488581963</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720488581963</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +159,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: First project files" />
     <MESSAGE value="add: Filters to login or register users" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: Filters to login or register users" />
+    <MESSAGE value="add: Print message method and implementations in login and register" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: Print message method and implementations in login and register" />
   </component>
 </project>
