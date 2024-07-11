@@ -31,6 +31,14 @@
             <input class="form-control" type="number" id="weight" name="weight" required>
         </div>
         <div class="mb-3">
+            <label for="address">Dirección:</label>
+            <input class="form-control" type="text" id="address" name="address" required>
+        </div>
+        <div class="mb-3">
+            <label for="numbering">Numeración:</label>
+            <input class="form-control" type="text" id="numbering" name="numbering" required>
+        </div>
+        <div class="mb-3">
             <label for="password">Contraseña:</label>
             <input class="form-control" type="password" id="password" name="password" required>
         </div>

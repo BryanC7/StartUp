@@ -10,5 +10,7 @@ public interface UserService {
     List<UserDTO> selectAllUsers();
     Optional<UserDTO> filterUser(String email, String password);
     Optional<UserDTO> filterUserRegister(String email, String nick);
-    UserDTO insertUser(UserDTO user);
+    void insertUser(UserDTO user);
+    UserDTO searchLastUser();
+    List<UserDTO> selectUsersWithAddresses();
 }

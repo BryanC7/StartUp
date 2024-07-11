@@ -11,7 +11,13 @@ import lombok.Setter;
 @Getter
 public class AddressDTO {
     private int addressId;
-    private String name;
+    private String addressName;
     private String numbering;
     private int userId;
+
+    public AddressDTO(String addressName, String numbering, int userId) {
+        this.addressName = addressName;
+        this.numbering = numbering;
+        this.userId = userId;
+    }
 }

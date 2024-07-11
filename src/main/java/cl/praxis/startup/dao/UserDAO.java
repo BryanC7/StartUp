@@ -9,5 +9,6 @@ public interface UserDAO {
 
     List<UserDTO> selectAllUsers();
 
-    UserDTO insertUser(UserDTO user);
+    void insertUser(UserDTO user);
+    List<UserDTO> selectUsersWithAddresses();
 }

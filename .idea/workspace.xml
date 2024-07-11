@@ -9,20 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Changes web.xml file">
+    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Including logic to validate administrator in user login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/AddressDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/AddressDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/UserDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../StartUp\exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,23 +72,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 10.1.24.executor": "Run",
-    "git-widget-placeholder": "admin",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;admin&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tomcat 10.1.24" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.24" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
@@ -142,7 +150,13 @@
       <workItem from="1720477741453" duration="8976000" />
       <workItem from="1720491369882" duration="209000" />
       <workItem from="1720491850529" duration="40000" />
-      <workItem from="1720556812002" duration="3281000" />
+      <workItem from="1720556812002" duration="3622000" />
+      <workItem from="1720567564637" duration="74000" />
+      <workItem from="1720569316706" duration="1375000" />
+      <workItem from="1720573063625" duration="24000" />
+      <workItem from="1720577305723" duration="47000" />
+      <workItem from="1720577773576" duration="4000" />
+      <workItem from="1720659156326" duration="10066000" />
     </task>
     <task id="LOCAL-00001" summary="feat: First project files">
       <option name="closed" value="true" />
@@ -176,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720491561672</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add: Including logic to validate administrator in user login">
+      <option name="closed" value="true" />
+      <created>1720560412387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720560412387</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +209,7 @@
     <MESSAGE value="add: Filters to login or register users" />
     <MESSAGE value="add: Print message method and implementations in login and register" />
     <MESSAGE value="add: Changes web.xml file" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: Changes web.xml file" />
+    <MESSAGE value="add: Including logic to validate administrator in user login" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: Including logic to validate administrator in user login" />
   </component>
 </project>

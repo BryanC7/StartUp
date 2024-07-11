@@ -16,6 +16,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String SELECT_ALL_USERS = "SELECT id, email, created_at, nick, name, password, weight, updated_at, rol_id FROM users";
     private static final String SELECT_USER_BY_ID = "SELECT id, email, created_at, nick, name, password, weight, updated_at, rol_id FROM users WHERE id = ?";
     private static final String INSERT_USER_SQL = "INSERT INTO users (email, created_at, nick, name, password, weight, updated_at, rol_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String USER_ADDRESS_JOIN = "SELECT u.id, u.email, u.created_at, u.nick, u.name, u.password, u.weight, u.updated_at, u.rol_id, a.address, a.numbering FROM users u JOIN addresses a ON u.id = a.user_id";
     @Override
     public UserDTO selectUser(int id) {
         UserDTO user = null;
@@ -65,8 +66,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserDTO insertUser(UserDTO user) {
-        UserDTO newUser = null;
+    public void insertUser(UserDTO user) {
         try (Connection connection = DBConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER_SQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
@@ -85,7 +85,7 @@ public class UserDAOImpl implements UserDAO {
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()) {
                 int id = rs.getInt(1);
-                newUser = new UserDTO(
+                new UserDTO(
                         id,
                         user.getEmail(),
                         user.getCreatedAt(),
@@ -100,6 +100,30 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return newUser;
+    }
+    public List<UserDTO> selectUsersWithAddresses() {
+        List<UserDTO> userAddressList = new ArrayList<>();
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(USER_ADDRESS_JOIN)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int userId = resultSet.getInt("id");
+                String email = resultSet.getString("email");
+                Date createdAt = resultSet.getDate("created_at");
+                String nick = resultSet.getString("nick");
+                String userName = resultSet.getString("name");
+                String password = resultSet.getString("password");
+                int weight = resultSet.getInt("weight");
+                Date updatedAt = resultSet.getDate("updated_at");
+                int rolId = resultSet.getInt("rol_id");
+                String addressName = resultSet.getString("address");
+                String numbering = resultSet.getString("numbering");
+
+                userAddressList.add(new UserDTO(userId, email, createdAt, nick, userName, password, weight, updatedAt, rolId, addressName, numbering));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userAddressList;
     }
 }

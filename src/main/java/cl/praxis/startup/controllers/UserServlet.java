@@ -1,7 +1,10 @@
 package cl.praxis.startup.controllers;
 
+import cl.praxis.startup.model.AddressDTO;
 import cl.praxis.startup.model.UserDTO;
+import cl.praxis.startup.services.AddressService;
 import cl.praxis.startup.services.UserService;
+import cl.praxis.startup.services.impl.AddressServiceImpl;
 import cl.praxis.startup.services.impl.UserServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,9 +20,11 @@ import java.util.Optional;
 @WebServlet(name = "UserServlet", value = "/user")
 public class UserServlet extends HttpServlet {
     private UserService objUserService;
+    private AddressService objAddressService;
 
     public void init() {
         objUserService = new UserServiceImpl();
+        objAddressService = new AddressServiceImpl();
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +42,7 @@ public class UserServlet extends HttpServlet {
                 break;
             case "insert":
                 registerUser(request, response);
+                registerAddress(request, response);
                 break;
             default:
                 loginView(request, response);
@@ -58,7 +64,7 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         Optional<UserDTO> userFound = objUserService.filterUser(email, password);
-        List<UserDTO> usersList = objUserService.selectAllUsers();
+        List<UserDTO> usersList = objUserService.selectUsersWithAddresses();
 
         if(userFound.isPresent()) {
             if(userFound.get().getRolId() == 1) {
@@ -99,15 +105,24 @@ public class UserServlet extends HttpServlet {
             UserDTO newUser = new UserDTO(email, createdAt, nick, name, password, weight, updatedAt, rolId);
             objUserService.insertUser(newUser);
             printMessage("msgSuccess",
-                    "login.jsp",
-                    "Usuario registrado exitósamente",
-                    request, response);
+                        "login.jsp",
+                        "Usuario registrado exitósamente",
+                        request, response);
         } else {
             printMessage("msgError",
                         "register.jsp",
                         "Correo y/o apodo ya registrados, intenta con uno nuevo",
                         request, response);
         }
+    }
+
+    private void registerAddress(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String address = request.getParameter("address");
+        String numbering = request.getParameter("numbering");
+        int userId = objUserService.searchLastUser().getUserId();
+
+        AddressDTO newAddress = new AddressDTO(address, numbering, userId);
+        objAddressService.insertAddress(newAddress);
     }
 
     private void printMessage(String attribute, String dispatcher, String message, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

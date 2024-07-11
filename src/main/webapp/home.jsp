@@ -25,6 +25,9 @@
                 <th scope="col">Peso</th>
                 <th scope="col">Fecha de registro</th>
                 <th scope="col">Última fecha de actualización</th>
+                <th scope="col">Rol Asignado</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Numeración</th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +43,16 @@
                     <td>${user.weight}</td>
                     <td>${user.createdAt}</td>
                     <td>${user.updatedAt}</td>
+
+                    <c:if test="${user.rolId == 1}">
+                        <td>Administrador</td>
+                    </c:if>
+                    <c:if test="${user.rolId == 2}">
+                        <td>Usuario</td>
+                    </c:if>
+
+                    <td>${user.address}</td>
+                    <td>${user.numbering}</td>
                 </tr>
             </c:forEach>
         </table>

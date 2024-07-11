@@ -42,7 +42,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO insertUser(UserDTO user) {
-        return OBJ_USER_DAO.insertUser(user);
+    public void insertUser(UserDTO user) {
+        OBJ_USER_DAO.insertUser(user);
+    }
+
+    @Override
+    public UserDTO searchLastUser() {
+        List<UserDTO> users = OBJ_USER_DAO.selectAllUsers();
+        return users.get(users.size() - 1);
+    }
+
+    @Override
+    public List<UserDTO> selectUsersWithAddresses() {
+        return OBJ_USER_DAO.selectUsersWithAddresses();
     }
 }
