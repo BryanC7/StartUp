@@ -2,9 +2,12 @@ package cl.praxis.startup.controllers;
 
 import cl.praxis.startup.model.AddressDTO;
 import cl.praxis.startup.model.UserDTO;
+import cl.praxis.startup.model.UserRolDTO;
 import cl.praxis.startup.services.AddressService;
+import cl.praxis.startup.services.UserRolService;
 import cl.praxis.startup.services.UserService;
 import cl.praxis.startup.services.impl.AddressServiceImpl;
+import cl.praxis.startup.services.impl.UserRolServiceImpl;
 import cl.praxis.startup.services.impl.UserServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,10 +24,12 @@ import java.util.Optional;
 public class UserServlet extends HttpServlet {
     private UserService objUserService;
     private AddressService objAddressService;
+    private UserRolService objUserRolService;
 
     public void init() {
         objUserService = new UserServiceImpl();
         objAddressService = new AddressServiceImpl();
+        objUserRolService = new UserRolServiceImpl();
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +47,8 @@ public class UserServlet extends HttpServlet {
                 break;
             case "insert":
                 registerUser(request, response);
-                registerAddress(request, response);
+                registerAddress(request);
+                registerUserRol();
                 break;
             default:
                 loginView(request, response);
@@ -116,13 +122,21 @@ public class UserServlet extends HttpServlet {
         }
     }
 
-    private void registerAddress(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void registerAddress(HttpServletRequest request) {
         String address = request.getParameter("address");
         String numbering = request.getParameter("numbering");
         int userId = objUserService.searchLastUser().getUserId();
 
         AddressDTO newAddress = new AddressDTO(address, numbering, userId);
         objAddressService.insertAddress(newAddress);
+    }
+
+    private void registerUserRol() {
+        int userId = objUserService.searchLastUser().getUserId();
+        int rolId = objUserService.selectUser(userId).getRolId();
+
+        UserRolDTO newUserRol = new UserRolDTO(userId, rolId);
+        objUserRolService.insertUserRol(newUserRol);
     }
 
     private void printMessage(String attribute, String dispatcher, String message, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

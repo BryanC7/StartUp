@@ -9,17 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Including logic to validate administrator in user login">
+    <list default="true" id="21933f0c-4b45-4215-a7c4-e04912501591" name="Changes" comment="add: Adding address object in project logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/controllers/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/dao/impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/AddressDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/AddressDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/model/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cl/praxis/startup/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +45,9 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -156,7 +151,8 @@
       <workItem from="1720573063625" duration="24000" />
       <workItem from="1720577305723" duration="47000" />
       <workItem from="1720577773576" duration="4000" />
-      <workItem from="1720659156326" duration="10066000" />
+      <workItem from="1720659156326" duration="10520000" />
+      <workItem from="1720729640395" duration="5650000" />
     </task>
     <task id="LOCAL-00001" summary="feat: First project files">
       <option name="closed" value="true" />
@@ -198,7 +194,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720560412387</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: Address object in DAO pattern">
+      <option name="closed" value="true" />
+      <created>1720669739779</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720669739779</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add: Adding address object in project logic">
+      <option name="closed" value="true" />
+      <created>1720669903036</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720669903036</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +222,8 @@
     <MESSAGE value="add: Print message method and implementations in login and register" />
     <MESSAGE value="add: Changes web.xml file" />
     <MESSAGE value="add: Including logic to validate administrator in user login" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: Including logic to validate administrator in user login" />
+    <MESSAGE value="feat: Address object in DAO pattern" />
+    <MESSAGE value="add: Adding address object in project logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: Adding address object in project logic" />
   </component>
 </project>
